@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import Menu from './components/menu/menu-component';
+import Menu from './components/menu-component';
+//import MenuItem from './components/menu/mi';
 import logo from './logo.svg';
 import './App.css';
 
