@@ -35,10 +35,11 @@ const Footer = styled.footer`
 `;
 
 
-class Wrapper extends React.Component {
+class Wrapper extends Component {
    render() {
      return (
      <Wrap>
+       <Helmet title="Music Shop Api" />
        <Header>
           <HeaderLogo />
           <Menu />

@@ -10,23 +10,32 @@ const LeftFloatUL = styled.ul`
 const MenuItem = styled.li`
   display:inline;
   padding:20px 60px;
-  border:solid 1px red;
+  text-decoration: none;
 `;
 
-class Menu extends React.Component{
+const MenuItemLink = styled.a`
+  text-size:16px;
+  font-weight:normal;
+  text-decoration: none;
+  color:white;
+`;
+
+class Menu extends Component{
   constructor(){
     super();
     this.state = {
-      hello: 'hello everyone'
+      home: 'Home',
+      strange: 'Strange Page',
+      random: 'Random Page'
     };
   }
 
   render() {
     return (
       <LeftFloatUL>
-        <MenuItem>{this.state.hello}</MenuItem>
-        <MenuItem>item B</MenuItem>
-        <MenuItem>item C</MenuItem>
+        <MenuItem><MenuItemLink href="/">{this.state.home}</MenuItemLink></MenuItem>
+        <MenuItem><MenuItemLink href="/Strange">{this.state.strange}</MenuItemLink></MenuItem>
+        <MenuItem><MenuItemLink href="/Random">{this.state.random}</MenuItemLink></MenuItem>
       </LeftFloatUL>
     );
   };

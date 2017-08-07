@@ -1,18 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { ConnectedRouter } from 'connected-react-router'
+import routes from './Routes'
+import Wrapper from './Wrapper';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <div>
-          <h2>Welcome to Music Shop Api..</h2>
-        </div>
-        <p>
-          THIS IS FROM OUR APP JS FILE
-        </p>
-      </div>
-    );
-  }
+const App = ({ history }) => {
+  return (
+    <Wrapper>
+      <ConnectedRouter history={history}>
+        { routes }
+      </ConnectedRouter>
+    </Wrapper>   
+  )
 }
 
-export default App;
+App.propTypes = {
+  history: PropTypes.object,
+}
+
+export default App

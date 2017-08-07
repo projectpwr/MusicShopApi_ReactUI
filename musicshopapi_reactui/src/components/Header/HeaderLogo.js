@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import logo from '../../logo.svg'; //not sure im a fan of reletive paths..perhaps there is a way to reference root src folder directly?
+//import styled from 'styled-components';
+import logo from '../../logo.svg'; 
 
 
 var styles =  {
@@ -9,7 +9,7 @@ var styles =  {
   'padding-top': '10px'
 };
 
-class HeaderLogo extends React.Component{
+class HeaderLogo extends Component{
 
   render() {
     return (
