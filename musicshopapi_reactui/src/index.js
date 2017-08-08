@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import React from 'react'
 import { render } from 'react-snapshot';
 import App from './App'
-import rootReducer from './reducers'
+import rootReducer from './Reducers'
 
 import registerServiceWorker from './registerServiceWorker';
 

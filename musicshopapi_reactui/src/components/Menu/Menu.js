@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 
 const LeftFloatUL = styled.ul`
@@ -33,8 +34,8 @@ class Menu extends Component{
   render() {
     return (
       <LeftFloatUL>
-        <MenuItem><MenuItemLink href="/">{this.state.home}</MenuItemLink></MenuItem>
-        <MenuItem><MenuItemLink href="/Strange">{this.state.strange}</MenuItemLink></MenuItem>
+        <MenuItem><Link to="/">{this.state.home}</Link></MenuItem>
+        <MenuItem><Link to="/Strange">{this.state.strange}</Link></MenuItem>
         <MenuItem><MenuItemLink href="/Random">{this.state.random}</MenuItemLink></MenuItem>
       </LeftFloatUL>
     );

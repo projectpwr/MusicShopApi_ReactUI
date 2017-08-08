@@ -5,7 +5,7 @@ import Menu from './components/Menu/Menu';
 import styled from 'styled-components';
 
 
-const Wrap = styled.body`
+const Wrap = styled.div`
 margin:0;
  padding: 0;
  font-family: sans-serif;
