@@ -4,6 +4,7 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import { createBrowserHistory } from 'history'
 import { routerMiddleware, connectRouter } from 'connected-react-router'
 import { Provider } from 'react-redux'
+import logger from 'redux-logger'
 import React from 'react'
 import { render } from 'react-snapshot';
 import App from './App'
@@ -21,17 +22,24 @@ const store = createStore(
   composeEnhancer(
     applyMiddleware(
       routerMiddleware(history),
+      logger
     ),
   ),
 )
+
+store.subscribe(() => {
+  console.log("actual change:", store.getState());
+})
+store.dispatch({type: "updateUser", payload: {name: "Will", age:1}});
+store.dispatch({type: "updateUser", payload: {name: "JIm", age:4}});
+store.dispatch({type: "updateUser", payload: {name: "Will", age:1}});
+
 //<AppContainer></AppContainer> 
 const domrender = () => {
   render((
-    
       <Provider store={store}>         
         <App history={history} />
       </Provider>
-     
     ), document.getElementById('root'))
 }
 
