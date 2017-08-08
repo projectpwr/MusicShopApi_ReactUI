@@ -15,15 +15,19 @@ import registerServiceWorker from './registerServiceWorker';
 
 const history = createBrowserHistory()
 
+const middlewares = [routerMiddleware(history)];
+
+console.log(process.env);
+
+if (process.env.NODE_ENV === `development`) {
+  middlewares.push(logger);
+}
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
   connectRouter(history)(rootReducer),
   composeEnhancer(
-    applyMiddleware(
-      routerMiddleware(history),
-      logger
-    ),
+    applyMiddleware(...middlewares),
   ),
 )
 
