@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import HeaderLogo from './components/Header/HeaderLogo';
-import Menu from './components/Menu/Menu';
+import HeaderLogo from './components/header/HeaderLogo';
+import Menu from './components/menu/Menu';
 import styled from 'styled-components';
 
 

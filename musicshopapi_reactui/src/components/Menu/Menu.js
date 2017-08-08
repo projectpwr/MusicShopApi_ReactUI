@@ -14,7 +14,7 @@ const MenuItem = styled.li`
   text-decoration: none;
 `;
 
-const MenuItemLink = styled.a`
+const MenuItemLink = styled(Link)`
   text-size:16px;
   font-weight:normal;
   text-decoration: none;
@@ -34,9 +34,9 @@ class Menu extends Component{
   render() {
     return (
       <LeftFloatUL>
-        <MenuItem><Link to="/">{this.state.home}</Link></MenuItem>
-        <MenuItem><Link to="/Strange">{this.state.strange}</Link></MenuItem>
-        <MenuItem><MenuItemLink href="/Random">{this.state.random}</MenuItemLink></MenuItem>
+        <MenuItem><MenuItemLink to="/">{this.state.home}</MenuItemLink></MenuItem>
+        <MenuItem><MenuItemLink to="/Strange">{this.state.strange}</MenuItemLink></MenuItem>
+        <MenuItem><MenuItemLink to="/Random">{this.state.random}</MenuItemLink></MenuItem>
       </LeftFloatUL>
     );
   };

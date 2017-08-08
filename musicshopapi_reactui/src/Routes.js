@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
-import HomeContainer from './components/Home/HomeContainer'
-import RandomContainer from './components/Random/RandomContainer'
-import StrangeContainer from './components/Strange/StrangeContainer'
+import HomeContainer from './components/home/HomeContainer'
+import RandomContainer from './components/random/RandomContainer'
+import StrangeContainer from './components/strange/StrangeContainer'
 
 const routes = (
   <div>
