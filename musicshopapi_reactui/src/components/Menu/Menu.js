@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
+import basketLogo from '../../assets/basket2.png';
 
 const LeftFloatUL = styled.ul`
   float:right;
@@ -8,10 +9,16 @@ const LeftFloatUL = styled.ul`
   > li { float:left;}
 `;
 
+
 const MenuItem = styled.li`
   display:inline;
-  padding:20px 60px;
   text-decoration: none;
+  padding-top:20px;
+  padding-bottom:20px;
+`;
+
+const PaddedMenuItem = styled(MenuItem)`
+  margin-right:60px;
 `;
 
 const MenuItemLink = styled(Link)`
@@ -21,22 +28,51 @@ const MenuItemLink = styled(Link)`
   color:white;
 `;
 
+const LoginLink = styled(MenuItemLink)`
+  border: solid 1px #ccc;
+  border-radius:8px;
+  padding:10px;
+  &:hover { background-color:#eee; color:black; cursor:hand; }
+`;
+
+const BasketHolder = styled.div`
+  margin-right:40px;
+  &:hover { color:black; cursor:hand; }
+`;
+
 class Menu extends Component{
   constructor(){
     super();
-    this.state = {
+    this.state = this.getInitialState();
+  }
+
+  componentWillMount(){
+    console.log(this.state);
+  }
+
+  getInitialState = () =>{
+    return {
       home: 'Home',
-      strange: 'Strange Page',
-      random: 'Random Page'
+      about: 'About',
+      product: 'Products'
     };
   }
+
 
   render() {
     return (
       <LeftFloatUL>
-        <MenuItem><MenuItemLink to="/">{this.state.home}</MenuItemLink></MenuItem>
-        <MenuItem><MenuItemLink to="/Strange">{this.state.strange}</MenuItemLink></MenuItem>
-        <MenuItem><MenuItemLink to="/Random">{this.state.random}</MenuItemLink></MenuItem>
+        <PaddedMenuItem><MenuItemLink to="/">{this.state.home}</MenuItemLink></PaddedMenuItem>
+        <PaddedMenuItem><MenuItemLink to="/About">{this.state.about}</MenuItemLink></PaddedMenuItem>
+        <PaddedMenuItem><MenuItemLink to="/Products">{this.state.product}</MenuItemLink></PaddedMenuItem>
+        <MenuItem>
+          <MenuItemLink to="/Basket">
+            <BasketHolder>
+              <img src={basketLogo} />{ this.props.basketItems }
+            </BasketHolder>
+          </MenuItemLink>
+        </MenuItem>
+        <MenuItem>{ this.props.loggedIn ? <LoginLink to="/Logout">Logout</LoginLink> : <LoginLink to="/Login">Login</LoginLink> }</MenuItem>
       </LeftFloatUL>
     );
   };

@@ -17,10 +17,10 @@ const history = createBrowserHistory()
 
 const middlewares = [routerMiddleware(history)];
 
-console.log(process.env);
+//console.log(process.env);
 
 if (process.env.NODE_ENV === `development`) {
-  middlewares.push(logger);
+  //middlewares.push(logger);
 }
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
@@ -31,9 +31,11 @@ const store = createStore(
   ),
 )
 
+/*
 store.subscribe(() => {
   console.log("actual change:", store.getState());
 })
+*/
 store.dispatch({type: "updateUser", payload: {name: "Will", age:1}});
 store.dispatch({type: "updateUser", payload: {name: "JIm", age:4}});
 store.dispatch({type: "updateUser", payload: {name: "Will", age:1}});
@@ -58,7 +60,7 @@ Pattern ["source-map@^0.5.6"] is trying to unpack in the same destination "C:\\U
 -map@~0.5.1","source-map@0.5.x"]. This could result in a non deterministic behavior, skipping.
 */ 
 // Hot reloading
-/*
+
 if (module.hot) {
   // Reload components
   module.hot.accept('./App', () => {
@@ -66,10 +68,10 @@ if (module.hot) {
   })
 
   // Reload reducers
-  module.hot.accept('./reducers', () => {
+  module.hot.accept(rootReducer, () => {
     store.replaceReducer(connectRouter(history)(rootReducer))
   })
 }
-*/
+
 
 

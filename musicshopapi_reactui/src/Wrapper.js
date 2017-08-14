@@ -6,12 +6,14 @@ import styled from 'styled-components';
 
 
 const Wrap = styled.div`
-margin:0;
- padding: 0;
- font-family: sans-serif;
- width:1200px;
- margin-left:auto;
- margin-right:auto;
+  margin:0; 
+  padding: 0;
+  font-family: sans-serif;
+  width:1200px;
+  margin-left:auto;
+  margin-right:auto;
+  font-size:14px;
+  color:#000;
 `;
 
 const Header = styled.header`

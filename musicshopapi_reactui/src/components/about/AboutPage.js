@@ -6,8 +6,7 @@ class StrangeContainer extends Component {
   render() {
     return (
         <div>
-            <Menu />
-          <h3>Why would you just redisplay a hidden menu?</h3>
+          <h3>This will become an about page</h3>
         </div> 
         
     );
