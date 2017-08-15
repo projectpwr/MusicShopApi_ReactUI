@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Label from '../common/Label';
+import Label from '../components/common/Label';
 
  
 const PaddingDiv = styled.div`
@@ -8,7 +8,11 @@ const PaddingDiv = styled.div`
 `;
 
 const RowDiv = styled.div`
-  margin: 10px;
+  width:320px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:10px;
+  text-align:right;
 `;
 
 const Input = styled.input`
@@ -17,10 +21,23 @@ const Input = styled.input`
   padding:10px;
 `;
 
+const SubmitBtn = styled.button`
+  border-radius:8px;
+  border solid 1px #ccc;
+  background-color:#eee;
+  padding:10px;
+  font-weight:bold;
+  &:hover { background-color:#ccc;  cursor:pointer; }
+`;
+
 class LoginPage extends Component {
   constructor(){
       super();
   }
+
+loginAction = () => {
+   this.state.loggedIn = true;
+}
 
 /*
   login = () => {
@@ -42,8 +59,11 @@ class LoginPage extends Component {
         </RowDiv>
         <RowDiv>
           <Label>Password</Label>
-          <Input name="password" />
+          <Input name="password" type="password" />
         </RowDiv>
+        <RowDiv>
+          <SubmitBtn onClick={this.loginAction}>Login</SubmitBtn>
+        </RowDiv>        
       </form>
     );
   }

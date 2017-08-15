@@ -6,13 +6,11 @@ import Wrapper from './Wrapper';
 
 const App = ({ history }) => {
   return (
-    
       <ConnectedRouter history={history}>
         <Wrapper>
           { routes }
         </Wrapper>   
       </ConnectedRouter>
-    
   )
 }
 

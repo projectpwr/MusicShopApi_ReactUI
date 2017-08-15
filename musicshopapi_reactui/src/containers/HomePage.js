@@ -6,7 +6,7 @@ const clickMe = () =>{
     //store.dispatch({type: "updateUser", payload: "HELLO"});
 }
 
-class HomeContainer extends Component {
+class HomePage extends Component {
   constructor(){
     super();
 
@@ -28,7 +28,7 @@ class HomeContainer extends Component {
 }
 
 
-export default HomeContainer;
+export default HomePage;
 
 
 

@@ -68,7 +68,7 @@ class Menu extends Component{
         <MenuItem>
           <MenuItemLink to="/Basket">
             <BasketHolder>
-              <img src={basketLogo} />{ this.props.basketItems }
+              Basket{ this.props.basketItems }
             </BasketHolder>
           </MenuItemLink>
         </MenuItem>
