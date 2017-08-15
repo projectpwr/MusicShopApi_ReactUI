@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
 import HeaderLogo from './components/header/HeaderLogo';
 import Menu from './components/menu/Menu';
 import styled from 'styled-components';
-
+import PropTypes from 'prop-types'
+import { ConnectedRouter } from 'connected-react-router'
+import routes from './Routes'
 
 const Wrap = styled.div`
   margin:0; 
@@ -37,23 +39,24 @@ const Footer = styled.footer`
 `;
 
 
-class Wrapper extends Component {
-   render() {
-     return (
+const AppWrapper = ({  history, loggedIn }) => (
+    <ConnectedRouter history={history}>  
      <Wrap>
        <Helmet title="Music Shop Api" />
        <Header>
           <HeaderLogo />
-          <Menu />
+          <Menu loggedIn={loggedIn} />
        </Header>
        <Content>
-         { this.props.children }
+         { routes }
        </Content>
        <Footer>This is the footer</Footer>
      </Wrap>
-     )
-   }
- }
+    </ConnectedRouter>
+)
 
+AppWrapper.propTypes = {
+  history: PropTypes.object.isRequired
+}
 
-export default Wrapper;
+export default AppWrapper;

@@ -1,8 +1,7 @@
-import Menu from '../components/menu/Menu';
 import React, { Component } from 'react';
 
 
-class StrangeContainer extends Component {
+class AboutPage extends Component {
   render() {
     return (
         <div>
@@ -13,4 +12,4 @@ class StrangeContainer extends Component {
   }
 }
 
-export default StrangeContainer;
+export default AboutPage;

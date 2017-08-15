@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
-import basketLogo from '../../assets/basket2.png';
 
 const LeftFloatUL = styled.ul`
   float:right;
@@ -26,24 +25,22 @@ const MenuItemLink = styled(Link)`
   font-weight:normal;
   text-decoration: none;
   color:white;
+  &:hover { cursor:pointer; color:#61dafb; }  
 `;
 
 const LoginLink = styled(MenuItemLink)`
   border: solid 1px #ccc;
   border-radius:8px;
   padding:10px;
-  &:hover { background-color:#eee; color:black; cursor:hand; }
+  &:hover { cursor:hand; color:black; background-color:#ccc;}
 `;
 
-const BasketHolder = styled.div`
-  margin-right:40px;
-  &:hover { color:black; cursor:hand; }
-`;
 
 class Menu extends Component{
   constructor(){
     super();
     this.state = this.getInitialState();
+    console.log(this);
   }
 
   componentWillMount(){
@@ -65,13 +62,11 @@ class Menu extends Component{
         <PaddedMenuItem><MenuItemLink to="/">{this.state.home}</MenuItemLink></PaddedMenuItem>
         <PaddedMenuItem><MenuItemLink to="/About">{this.state.about}</MenuItemLink></PaddedMenuItem>
         <PaddedMenuItem><MenuItemLink to="/Products">{this.state.product}</MenuItemLink></PaddedMenuItem>
-        <MenuItem>
+        <PaddedMenuItem>
           <MenuItemLink to="/Basket">
-            <BasketHolder>
-              Basket{ this.props.basketItems }
-            </BasketHolder>
+            Basket{ this.props.basketItems }
           </MenuItemLink>
-        </MenuItem>
+        </PaddedMenuItem>
         <MenuItem>{ this.props.loggedIn ? <LoginLink to="/Logout">Logout</LoginLink> : <LoginLink to="/Login">Login</LoginLink> }</MenuItem>
       </LeftFloatUL>
     );

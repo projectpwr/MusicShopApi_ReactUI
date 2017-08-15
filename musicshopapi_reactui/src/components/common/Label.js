@@ -8,9 +8,6 @@ import styled from 'styled-components';
   `;
  
 class Label extends Component {
-  constructor(){
-    super();
-  }
 
   render(){
     return (

@@ -31,12 +31,9 @@ const SubmitBtn = styled.button`
 `;
 
 class LoginPage extends Component {
-  constructor(){
-      super();
-  }
 
 loginAction = () => {
-   this.state.loggedIn = true;
+   this.setState({loggedIn: true});
 }
 
 /*

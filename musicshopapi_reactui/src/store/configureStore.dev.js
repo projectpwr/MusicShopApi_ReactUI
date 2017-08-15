@@ -1,13 +1,12 @@
-import { createStore, applyMiddleware, compose } from 'redux'
+
 import thunk from 'redux-thunk'
-import { createLogger } from 'redux-logger'
 import api from '../middleware/api'
 
+import { applyMiddleware, compose, createStore } from 'redux'
 import { createBrowserHistory } from 'history'
 import { routerMiddleware, connectRouter } from 'connected-react-router'
 import logger from 'redux-logger'
 import rootReducer from '../Reducers'
-//import DevTools from '../containers/DevTools'
 
 
 export const history = createBrowserHistory();
