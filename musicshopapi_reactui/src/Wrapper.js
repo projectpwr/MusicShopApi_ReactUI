@@ -3,10 +3,8 @@ import Helmet from 'react-helmet'
 import HeaderLogo from './components/header/HeaderLogo'
 import Menu from './components/menu/Menu'
 import styled from 'styled-components'
-/*
-import { connect } from 'react-redux'
-import * as LoginActions from './actions/loginActions'
-*/
+
+
 const Wrap = styled.div`
   margin:0; 
   padding: 0;
@@ -38,30 +36,9 @@ const Footer = styled.footer`
   padding:25px;
 `;
 
- /*
-const mapStateToProps = (store) => {
-  return {
-    loggedIn: store.login.loggedIn,
-  }
-};
-*/
-/*
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleLoggedInOut: "hello",
-    //toggleLoggedInOut: (newValue) => dispatch( LoginActions.setLoggedInOrOut(newValue) ),
-    setLoggedIn: () => dispatch( LoginActions.setLoggedInOrOut(true) )
-  }
-}*/
+
 
 class Wrapper extends Component {
-  /*componentWillMount(){
-    console.log(this.props);
-    this.props.dispatch( LoginActions.setLoggedInOrOut(true) );
-    //this.props.setLoggedIn();
-  }*/
-
-
   render(){
     return(
       <Wrap>
@@ -79,8 +56,4 @@ class Wrapper extends Component {
   }
 }
 
-
-
-
 export default Wrapper
-//export default connect(mapStateToProps)(Wrapper)
