@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Label from '../components/common/Label';
-
+import { connect } from 'react-redux'
+import * as LoginActions from '../actions/loginActions'
  
 const PaddingDiv = styled.div`
   padding:30px;
@@ -30,26 +31,49 @@ const SubmitBtn = styled.button`
   &:hover { background-color:#ccc;  cursor:pointer; }
 `;
 
-class LoginPage extends Component {
 
-loginAction = () => {
-   this.setState({loggedIn: true});
+
+
+
+ 
+const mapStateToProps = (store) => {
+  return {
+    loggedIn: store.login.loggedIn,
+  }
+};
+
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLoggedIn: () => dispatch( LoginActions.setLoggedInOrOut(true) ),
+    setLoggedOut: () => dispatch( LoginActions.setLoggedInOrOut(false) )
+  }
 }
 
-/*
-  login = () => {
-    this.state.loggedIn = true;
+
+class LoginPage extends Component {
+  componentWillMount(){
+    console.log(this.props);
+    //this.props.dispatch( LoginActions.setLoggedInOrOut(true) );
+    //this.props.setLoggedIn();
   }
 
-  logout = () => {
-    this.state.loggedIn = false;
-  }  
-*/
+  setLoggedIn() {
+    this.props.dispatch( LoginActions.setLoggedInOrOut(true) )
+  }
+
+  setLoggedOut() {
+    this.props.dispatch( LoginActions.setLoggedInOrOut(false) )
+  }
+
   render(){
+    const { loggedIn } = this.props;
+
     return (
       <form>
         <PaddingDiv />
         <h1>Login</h1>
+        <h2>Are you logged in?: {loggedIn ? 'YES' : 'NO' }</h2>
         <RowDiv>
           <Label>Username</Label>
           <Input name="username" />
@@ -59,11 +83,12 @@ loginAction = () => {
           <Input name="password" type="password" />
         </RowDiv>
         <RowDiv>
-          <SubmitBtn onClick={this.loginAction}>Login</SubmitBtn>
+          { loggedIn ? <SubmitBtn type="button" onClick={this.setLoggedOut.bind(this)}>LogOut</SubmitBtn> : null }
+          { loggedIn ? null : <SubmitBtn type="button" onClick={this.setLoggedIn.bind(this)}>Login</SubmitBtn> }
         </RowDiv>        
       </form>
-    );
+    )
   }
 }
 
-export default LoginPage;
+export default connect(mapStateToProps)(LoginPage)
