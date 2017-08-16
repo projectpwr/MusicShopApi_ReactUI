@@ -1,7 +1,7 @@
 const loginReducer = (state = {}, action) => {
   switch(action.type){
     case "toggleLoggedIn": {
-      state = {...state, loggedIn: action.payload.loggedIn};
+      state = {...state, loggedIn: action.payload};
       break;
     }
     default:{break;}

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const LeftFloatUL = styled.ul`
   float:right;
@@ -37,37 +37,29 @@ const LoginLink = styled(MenuItemLink)`
 
 
 class Menu extends Component{
-  constructor(){
-    super();
-    this.state = this.getInitialState();
-    console.log(this);
-  }
 
   componentWillMount(){
-    console.log(this.state);
-  }
-
-  getInitialState = () =>{
-    return {
-      home: 'Home',
-      about: 'About',
-      product: 'Products'
-    };
+    console.log(this.props);
   }
 
 
   render() {
+    const { loggedIn, basketItems } = this.props;
+console.log(this);
+
     return (
       <LeftFloatUL>
-        <PaddedMenuItem><MenuItemLink to="/">{this.state.home}</MenuItemLink></PaddedMenuItem>
-        <PaddedMenuItem><MenuItemLink to="/About">{this.state.about}</MenuItemLink></PaddedMenuItem>
-        <PaddedMenuItem><MenuItemLink to="/Products">{this.state.product}</MenuItemLink></PaddedMenuItem>
+        <PaddedMenuItem><MenuItemLink to="/">Home</MenuItemLink></PaddedMenuItem>
+        <PaddedMenuItem><MenuItemLink to="/About">About</MenuItemLink></PaddedMenuItem>
+        <PaddedMenuItem><MenuItemLink to="/Products">Products</MenuItemLink></PaddedMenuItem>
         <PaddedMenuItem>
           <MenuItemLink to="/Basket">
-            Basket{ this.props.basketItems }
+            Basket{ basketItems }
           </MenuItemLink>
         </PaddedMenuItem>
-        <MenuItem>{ this.props.loggedIn ? <LoginLink to="/Logout">Logout</LoginLink> : <LoginLink to="/Login">Login</LoginLink> }</MenuItem>
+        <MenuItem>
+          { loggedIn ? <LoginLink to="/Logout" >Logout</LoginLink> : <LoginLink to="/Login" >Login</LoginLink> }
+        </MenuItem>
       </LeftFloatUL>
     );
   };

@@ -1,26 +1,32 @@
 import { Provider } from 'react-redux'
 import React from 'react'
 import { render } from 'react-snapshot';
-import AppWrapper from './AppWrapper'
+import Wrapper from './Wrapper'
 import registerServiceWorker from './registerServiceWorker';
-
+import { ConnectedRouter } from 'connected-react-router'
 import { configureStore, history } from './store/configureStore'
+import routes from './Routes'
+import * as LoginActions from './actions/loginActions'
 
 const store = configureStore()
 
 
-const loggedIn = store.getState();
-console.log(loggedIn);
+store.dispatch( LoginActions.setLoggedInOrOut(false) );
+const loggedIn = store.getState().login.loggedIn;
+
 
 const domrender = () => {
   render((
     <Provider store={store}>   
-      <AppWrapper history={history} loggedIn={store.getState().login.loggedIn} />
+      <ConnectedRouter history={history}>  
+        <Wrapper loggedIn={loggedIn}>
+          { routes }
+        </Wrapper>
+      </ConnectedRouter>
     </Provider>
     ), document.getElementById('root'))
 }
 
-store.dispatch({type:'toggleLoggedIn', payload:{loggedIn:true}});
 
 
 domrender()
@@ -29,7 +35,7 @@ registerServiceWorker();
 
   if (module.hot) {
     // Reload components
-    module.hot.accept('./AppWrapper', () => {
+    module.hot.accept('./Wrapper', () => {
       domrender()
     })
   }
