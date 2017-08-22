@@ -11,7 +11,7 @@ import * as LoginActions from './actions/loginActions'
 const store = configureStore()
 
 
-store.dispatch( LoginActions.setLoggedInOrOut(false) );
+//store.dispatch( LoginActions.setLoggedInOrOut(false) );
 const loggedIn = store.getState().login.loggedIn;
 
 

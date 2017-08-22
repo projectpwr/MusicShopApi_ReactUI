@@ -39,52 +39,63 @@ const SubmitBtn = styled.button`
 const mapStateToProps = (store) => {
   return {
     loggedIn: store.login.loggedIn,
+    token: store.login.token,
+    error: store.login.error
   }
 };
 
-
+/*
 const mapDispatchToProps = (dispatch) => {
   return {
     setLoggedIn: () => dispatch( LoginActions.setLoggedInOrOut(true) ),
     setLoggedOut: () => dispatch( LoginActions.setLoggedInOrOut(false) )
   }
 }
-
+*/
 
 class LoginPage extends Component {
+  constructor(props){
+    super(props);
+    this.tryLogin = this.tryLogin.bind(this);
+  }
+
   componentWillMount(){
-    console.log(this.props);
-    //this.props.dispatch( LoginActions.setLoggedInOrOut(true) );
-    //this.props.setLoggedIn();
   }
 
-  setLoggedIn() {
-    this.props.dispatch( LoginActions.setLoggedInOrOut(true) )
-  }
+  tryLogin(e) {
+    e.preventDefault();
 
-  setLoggedOut() {
-    this.props.dispatch( LoginActions.setLoggedInOrOut(false) )
+    const formData = {};
+    for (const field in this.refs) {
+      console.log(this.refs[field]);
+      formData[field] = this.refs[field].value;
+    }
+    console.log('-->', formData);
+
+    this.props.dispatch( LoginActions.getUserToken(formData) )
   }
 
   render(){
-    const { loggedIn } = this.props;
+    const { loggedIn, token, error } = this.props;
 
     return (
-      <form>
+      <form onSubmit={ this.tryLogin } >
         <PaddingDiv />
         <h1>Login</h1>
+        { error !== undefined ? <p> {error} </p> : null }
         <h2>Are you logged in?: {loggedIn ? 'YES' : 'NO' }</h2>
+        {loggedIn ? <h3> Your login token is: { token }</h3> : null }
         <RowDiv>
           <Label>Username</Label>
-          <Input name="username" />
+          <input ref="Email" name="username" defaultValue="admin@musicshop.com" />
         </RowDiv>
         <RowDiv>
           <Label>Password</Label>
-          <Input name="password" type="password" />
+          <input ref="Password" name="password" type="password" defaultValue="Password9!" />
         </RowDiv>
         <RowDiv>
-          { loggedIn ? <SubmitBtn type="button" onClick={this.setLoggedOut.bind(this)}>LogOut</SubmitBtn> : null }
-          { loggedIn ? null : <SubmitBtn type="button" onClick={this.setLoggedIn.bind(this)}>Login</SubmitBtn> }
+
+          { loggedIn ? null : <SubmitBtn type="submit" >Login</SubmitBtn> }
         </RowDiv>        
       </form>
     )
