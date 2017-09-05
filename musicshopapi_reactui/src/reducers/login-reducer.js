@@ -9,7 +9,11 @@ const loginReducer = (state = {}, action) => {
       break;
     }
     case "GET_LOGIN_TOKEN_REJECTED":{
-      state = {...state, loggedIn: false, token: '', expiry: '', error: 'Incorrect Username or Password.'};
+      var errorMessageForUser = 'Service Unavailable';
+      if(action.payload.response !== undefined && action.payload.response.status === 400){
+        errorMessageForUser = 'Incorrect Username or Password.';
+      }
+      state = {...state, loggedIn: false, token: '', expiry: '', error: errorMessageForUser};
       break;
     }    
     default:{break;}

@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import api from '../middleware/api'
 
 import { applyMiddleware, compose, createStore } from 'redux'
+import { autoRehydrate, persistStore } from 'redux-persist'
 import { createBrowserHistory } from 'history'
 import { routerMiddleware, connectRouter } from 'connected-react-router'
 import logger from 'redux-logger'
@@ -18,9 +19,12 @@ export const configureStore = preloadedState => {
   const store = createStore(
     connectRouter(history)(rootReducer),
     composeEnhancer(
-      applyMiddleware(routerMiddleware(history), thunk, api, logger),
+      autoRehydrate(),
+      applyMiddleware(routerMiddleware(history), thunk, api, logger, ),
     ),
   )
+
+  persistStore(store);
  
 // Hot reloading
   if (module.hot) {

@@ -11,13 +11,10 @@ export const configureStore = preloadedState => {
   const store = createStore(
     connectRouter(history)(rootReducer),
     composeEnhancer(
+      autoRehydrate(),
       applyMiddleware(routerMiddleware(history), thunk, api,),
     ),
   )
 
-  /*
-const configureStore = preloadedState => createStore(
-  rootReducer,
-  preloadedState,
-  applyMiddleware(thunk, api)
-)*/
+  persistStore(store);
+
