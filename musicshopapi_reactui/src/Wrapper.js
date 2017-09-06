@@ -36,6 +36,13 @@ const Footer = styled.footer`
   padding:25px;
 `;
 
+const HeaderTitle = styled.h2`
+color:white;
+display:inline-block;
+vertical-align:middle;
+padding-top:10px;
+`
+
 
 
 class Wrapper extends Component {
@@ -45,6 +52,7 @@ class Wrapper extends Component {
        <Helmet title="Music Shop Api React UI" />
        <Header>
           <HeaderLogo />
+          <HeaderTitle>Music Shop React UI</HeaderTitle>
           <Menu loggedIn={this.props.loggedIn} />
        </Header>
        <Content>
