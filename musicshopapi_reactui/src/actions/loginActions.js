@@ -16,3 +16,9 @@ export function getUserToken(loginInfo){
     
 }
 
+export function clearLoginErrorMessage(){
+  return function(dispatch){
+    dispatch({type: "CLEAR_LOGIN_ERROR_MESSAGE", payload: null})
+  }
+}
+

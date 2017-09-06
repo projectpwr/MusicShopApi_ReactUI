@@ -2,6 +2,7 @@ const loginReducer = (state = {}, action) => {
   switch(action.type){
     case "GET_LOGIN_TOKEN_FULFILLED":{
       if(action.payload.token !== undefined){
+        //parse token and stick user info into state too
         state = {...state, loggedIn: true, token: action.payload.token, expiry: action.payload.expiration, error: ''};
       }else{
         state = {...state, loggedIn: false, token: '', expiry: ''};
@@ -16,7 +17,10 @@ const loginReducer = (state = {}, action) => {
       state = {...state, loggedIn: false, token: '', expiry: '', error: errorMessageForUser};
       break;
     }    
-    default:{break;}
+    case "CLEAR_LOGIN_ERROR_MESSAGE":{
+      state = {...state, error: undefined};
+    }
+
   }
     return state;
 };

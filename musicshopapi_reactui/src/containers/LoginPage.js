@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import * as LoginActions from '../actions/loginActions'
  
 const PaddingDiv = styled.div`
-  padding:30px;
+  padding:0px 30px;
 `;
 
 const RowDiv = styled.div`
@@ -60,8 +60,14 @@ class LoginPage extends Component {
   }
 
   componentWillMount(){
+
+  }
+  componentWillUnmount(){
+    this.props.dispatch( LoginActions.clearLoginErrorMessage() )    
   }
 
+
+  /** need to try rework this to use redux forms as has to be a cleaner way */
   tryLogin(e) {
     e.preventDefault();
 
@@ -74,6 +80,9 @@ class LoginPage extends Component {
 
     this.props.dispatch( LoginActions.getUserToken(formData) )
   }
+
+
+
 
   render(){
     const { loggedIn, token, error } = this.props;
