@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import * as LogoutActions from '../../actions/logoutActions'
 
 const LeftFloatUL = styled.ul`
   float:right;
@@ -35,17 +37,24 @@ const LoginLink = styled(MenuItemLink)`
   &:hover { cursor:hand; color:black; background-color:#ccc;}
 `;
 
+const mapStateToProps = (store) => {
+  return {
+    loggedIn: store.login.loggedIn,
+    username: store.user.user_name
+  }
+};
+
+
 
 class Menu extends Component{
 
   componentWillMount(){
-    console.log(this.props);
+    
   }
 
 
   render() {
     const { loggedIn, basketItems } = this.props;
-console.log(this);
 
     return (
       <LeftFloatUL>
@@ -58,7 +67,7 @@ console.log(this);
           </MenuItemLink>
         </PaddedMenuItem>
         <MenuItem>
-          { loggedIn ? <LoginLink to="/Logout" >Logout</LoginLink> : <LoginLink to="/Login" >Login</LoginLink> }
+          { loggedIn ? <LoginLink onClick={ LogoutActions.logout() } >Logout</LoginLink> : <LoginLink to="/Login" >Login</LoginLink> }
         </MenuItem>
       </LeftFloatUL>
     );
@@ -66,4 +75,4 @@ console.log(this);
 }
 
 
-export default Menu;
+export default connect(mapStateToProps)(Menu)

@@ -19,7 +19,7 @@ const domrender = () => {
   render((
     <Provider store={store}>   
       <ConnectedRouter history={history}>  
-        <Wrapper loggedIn={loggedIn}>
+        <Wrapper>
           { routes }
         </Wrapper>
       </ConnectedRouter>
