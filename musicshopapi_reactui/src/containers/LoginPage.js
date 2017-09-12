@@ -16,11 +16,13 @@ const RowDiv = styled.div`
   text-align:right;
 `;
 
+/*
 const Input = styled.input`
   border-radius:8px;
   border solid 1px #ccc;
   padding:10px;
 `;
+*/
 
 const SubmitBtn = styled.button`
   border-radius:8px;
@@ -44,14 +46,7 @@ const mapStateToProps = (store) => {
   }
 };
 
-/*
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setLoggedIn: () => dispatch( LoginActions.setLoggedInOrOut(true) ),
-    setLoggedOut: () => dispatch( LoginActions.setLoggedInOrOut(false) )
-  }
-}
-*/
+
 
 class LoginPage extends Component {
   constructor(props){

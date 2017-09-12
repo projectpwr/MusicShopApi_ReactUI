@@ -18,6 +18,10 @@ const MenuItem = styled.li`
   padding-bottom:20px;
 `;
 
+const MenuItemNoTopPad = styled(MenuItem)`
+  padding-top:10px;
+`;
+
 const PaddedMenuItem = styled(MenuItem)`
   margin-right:60px;
 `;
@@ -33,7 +37,20 @@ const MenuItemLink = styled(Link)`
 const LoginLink = styled(MenuItemLink)`
   border: solid 1px #ccc;
   border-radius:8px;
-  padding:10px;
+  padding:10px 20px;
+  &:hover { cursor:hand; color:black; background-color:#ccc;}
+`;
+
+const LogoutButton = styled.button`
+  text-size:16px;
+  font-weight:normal;
+  text-decoration: none;
+  color:white;
+  border: solid 1px #ccc;
+  border-radius:8px;
+  padding:10px 20px;
+  background-color:inherit;
+  text-align: -webkit-match-parent;
   &:hover { cursor:hand; color:black; background-color:#ccc;}
 `;
 
@@ -47,9 +64,15 @@ const mapStateToProps = (store) => {
 
 
 class Menu extends Component{
+  constructor(props){
+    super(props);
+    this.tryLogout = this.tryLogout.bind(this);
+  }
 
-  componentWillMount(){
-    
+  
+
+  tryLogout(){
+    this.props.dispatch( LogoutActions.logout() );
   }
 
 
@@ -66,9 +89,9 @@ class Menu extends Component{
             Basket{ basketItems }
           </MenuItemLink>
         </PaddedMenuItem>
-        <MenuItem>
-          { loggedIn ? <LoginLink onClick={ LogoutActions.logout() } >Logout</LoginLink> : <LoginLink to="/Login" >Login</LoginLink> }
-        </MenuItem>
+        { loggedIn ? null : <MenuItem><LoginLink to="/Login" >Login</LoginLink></MenuItem> }
+        { loggedIn ? <MenuItemNoTopPad><LogoutButton onClick={ this.tryLogout } >Logout</LogoutButton></MenuItemNoTopPad> : null }
+        
       </LeftFloatUL>
     );
   };

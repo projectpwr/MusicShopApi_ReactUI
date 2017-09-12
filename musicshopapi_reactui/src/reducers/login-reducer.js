@@ -19,7 +19,9 @@ const loginReducer = (state = {}, action) => {
     }    
     case "CLEAR_LOGIN_ERROR_MESSAGE":{
       state = {...state, error: undefined};
+      break;
     }
+    default:{break;}
 
   }
     return state;

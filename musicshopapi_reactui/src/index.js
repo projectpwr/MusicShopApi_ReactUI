@@ -6,14 +6,8 @@ import registerServiceWorker from './registerServiceWorker';
 import { ConnectedRouter } from 'connected-react-router'
 import { configureStore, history } from './store/configureStore'
 import routes from './Routes'
-import * as LoginActions from './actions/loginActions'
 
 const store = configureStore()
-
-
-//store.dispatch( LoginActions.setLoggedInOrOut(false) );
-const loggedIn = store.getState().login.loggedIn;
-
 
 const domrender = () => {
   render((
@@ -26,8 +20,6 @@ const domrender = () => {
     </Provider>
     ), document.getElementById('root'))
 }
-
-
 
 domrender()
 
