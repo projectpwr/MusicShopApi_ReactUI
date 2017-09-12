@@ -5,9 +5,7 @@ import * as apiHelpers from '../helpers/apiHelpers'
 export function getUserToken(loginInfo){
 
   return function(dispatch){
-    let tokenURL = apiHelpers.getMusicShopApiDomainAndPort() + "/api/v1/accounts/token";
-
-    axios.post(tokenURL, loginInfo)
+    axios.post( apiHelpers.MusicShopTokenApiURL, loginInfo )
       .then((response) => {
         dispatch({type: "GET_LOGIN_TOKEN_FULFILLED", payload: response.data})
       })
