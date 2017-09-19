@@ -1,5 +1,4 @@
 const rolesReducer = (state = {}, action) => {
-console.log(action);
 
   switch(action.type){
     case "GET_ROLES_FULFILLED":{

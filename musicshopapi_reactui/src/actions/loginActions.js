@@ -8,6 +8,7 @@ export function getUserToken(loginInfo){
     axios.post( apiHelpers.MusicShopTokenApiURL, loginInfo )
       .then((response) => {
         dispatch({type: "GET_LOGIN_TOKEN_FULFILLED", payload: response.data})
+        dispatch({type: "POPULATE_USER_FROM_TOKEN", payload: response.data})
       })
       .catch((err) => {
         dispatch({type: "GET_LOGIN_TOKEN_REJECTED", payload: err})

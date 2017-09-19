@@ -42,7 +42,9 @@ const mapStateToProps = (store) => {
   return {
     loggedIn: store.login.loggedIn,
     token: store.login.token,
-    error: store.login.error
+    error: store.login.error,
+    username: store.user.name,
+    userRoles: store.user.roles,
   }
 };
 
@@ -68,11 +70,8 @@ class LoginPage extends Component {
 
     const formData = {};
     for (const field in this.refs) {
-      console.log(this.refs[field]);
       formData[field] = this.refs[field].value;
     }
-    console.log('-->', formData);
-
     this.props.dispatch( LoginActions.getUserToken(formData) )
   }
 
@@ -80,15 +79,22 @@ class LoginPage extends Component {
 
 
   render(){
-    const { loggedIn, token, error } = this.props;
+    const { loggedIn, token, error, username, userRoles } = this.props;
 
     return (
+
+      /* split into 2 sub components - 1 to output logged in user info, another to display login form */
       <form onSubmit={ this.tryLogin } >
         <PaddingDiv />
         <h1>Login</h1>
+        <h3>Hello { username }</h3>
+        <h4>You have the following roles:</h4>
+        {userRoles != null ? <ul>{ userRoles.map((element, index) => {return (<li key={index}>{element}</li>) } ) }</ul> : null }
         { error !== undefined ? <p> {error} </p> : null }
         <h2>Are you logged in?: {loggedIn ? 'YES' : 'NO' }</h2>
         {loggedIn ? <h3> Your login token is: { token }</h3> : null }
+
+
         <RowDiv>
           <Label>Username</Label>
           <input ref="Email" name="username" defaultValue="admin@musicshop.com" />
