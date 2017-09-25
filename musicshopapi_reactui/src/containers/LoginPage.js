@@ -80,35 +80,44 @@ class LoginPage extends Component {
 
   render(){
     const { loggedIn, token, error, username, userRoles } = this.props;
-
-    return (
-
-      /* split into 2 sub components - 1 to output logged in user info, another to display login form */
-      <form onSubmit={ this.tryLogin } >
+    
+    if(loggedIn){
+      return(
+        <div>
         <PaddingDiv />
-        <h1>Login</h1>
-        <h3>Hello { username }</h3>
-        <h4>You have the following roles:</h4>
-        {userRoles != null ? <ul>{ userRoles.map((element, index) => {return (<li key={index}>{element}</li>) } ) }</ul> : null }
-        { error !== undefined ? <p> {error} </p> : null }
-        <h2>Are you logged in?: {loggedIn ? 'YES' : 'NO' }</h2>
-        {loggedIn ? <h3> Your login token is: { token }</h3> : null }
-
-
-        <RowDiv>
-          <Label>Username</Label>
-          <input ref="Email" name="username" defaultValue="admin@musicshop.com" />
-        </RowDiv>
-        <RowDiv>
-          <Label>Password</Label>
-          <input ref="Password" name="password" type="password" defaultValue="Password9!" />
-        </RowDiv>
-        <RowDiv>
-
-          { loggedIn ? null : <SubmitBtn type="submit" >Login</SubmitBtn> }
-        </RowDiv>        
-      </form>
-    )
+        <div>
+          <h3>Hello there:{ username }</h3>
+          <h4>You have the following roles:</h4>
+          {userRoles != null ? <ul>{ userRoles.map((element, index) => {return (<li key={index}>{element}</li>) } ) }</ul> : null }  
+          <h3>Your login token is: { token }</h3>      
+          <p>Use the Logout button on the top right to log out</p>
+        </div>
+        </div>
+      )
+    }else{
+      return(
+        <div>
+          <PaddingDiv />
+          <div>
+            <h1>Login</h1>
+            { error !== undefined ? <p> {error} </p> : null }
+            <form onSubmit={ this.tryLogin } >
+              <RowDiv>
+                <Label>Username</Label>
+                <input ref="Email" name="username" defaultValue="admin@musicshop.com" />
+              </RowDiv>
+              <RowDiv>
+                <Label>Password</Label>
+                <input ref="Password" name="password" type="password" defaultValue="Password9!" />
+              </RowDiv>
+              <RowDiv>
+              <SubmitBtn type="submit" >Login</SubmitBtn>
+            </RowDiv>      
+          </form>
+        </div> 
+        </div>
+      )
+    }
   }
 }
 
