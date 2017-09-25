@@ -1,10 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import ProductSearch from '../components/product/ProductSearch'
 
+const mapStateToProps = (store) => {
+  return {
+    loggedIn: store.login.loggedIn,
+    token: store.login.token,
+    error: store.login.error,
+    username: store.user.name,
+    userRoles: store.user.roles,
+  }
+};
 
-const clickMe = () =>{
-  console.log("clicked!")
-    //store.dispatch({type: "updateUser", payload: "HELLO"});
-}
 
 class HomePage extends Component {
 
@@ -14,9 +21,7 @@ class HomePage extends Component {
           <div>
             <h2>Welcome to Music Shop Api..</h2>
           </div>
-          <p onClick={clickMe}>
-            THIS IS now in its own home container component!
-          </p>
+          <ProductSearch />
           <p>OUr user state is: {this.props.user}</p>
         </div> 
     );
@@ -24,7 +29,7 @@ class HomePage extends Component {
 }
 
 
-export default HomePage;
+export default connect(mapStateToProps)(HomePage)
 
 
 

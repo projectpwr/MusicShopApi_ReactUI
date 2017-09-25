@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 
 class ProductPage extends Component {
@@ -6,7 +6,8 @@ class ProductPage extends Component {
     return (
         <div>
           <div>
-            <h2>THIS is a products page with search function and product listings</h2>
+            <h2>THIS is a products page with search function and product listings.
+                use standard productsearch component and make api calls to search on products...</h2>
           </div>
         </div> 
     );

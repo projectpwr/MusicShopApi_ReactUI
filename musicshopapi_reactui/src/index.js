@@ -9,6 +9,11 @@ import routes from './Routes'
 
 const store = configureStore()
 
+
+if( store.getState().login.loggedIn === undefined ){
+  store.dispatch({type: "POPULATE_STUB_USER", payload: ""})  
+}    
+
 const domrender = () => {
   render((
     <Provider store={store}>   

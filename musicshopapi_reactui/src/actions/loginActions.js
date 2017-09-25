@@ -11,7 +11,7 @@ export function getUserToken(loginInfo){
         dispatch({type: "POPULATE_USER_FROM_TOKEN", payload: response.data})
       })
       .catch((err) => {
-        dispatch({type: "GET_LOGIN_TOKEN_REJECTED", payload: err})
+        dispatch({type: "GET_LOGIN_TOKEN_REJECTED", payload: err})  
       })
   }
     

@@ -7,13 +7,17 @@ import styled from 'styled-components'
     padding:20px;
   `;
  
-class Label extends Component {
+class ProductSearch extends Component {
 
   render(){
     return (
-      <StyledLabel for="{this.props.for}">{this.props.children}</StyledLabel>
+      <StyledLabel>
+        <form>
+          Search form to go here
+        </form>
+      </StyledLabel>
     );
   }
 }
 
-export default Label;
+export default ProductSearch;

@@ -6,7 +6,6 @@ export function getRoles(token){
   return function(dispatch){
     axios.get( apiHelpers.MusicShopRolesApiURL, apiHelpers.getApiHeaders(token))
       .then((response) => {
-        console.log(response);
         dispatch({type: "GET_ROLES_FULFILLED", payload: response.data})
       })
       .catch((err) => {
