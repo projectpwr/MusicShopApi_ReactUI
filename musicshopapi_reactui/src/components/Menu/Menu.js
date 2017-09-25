@@ -57,7 +57,8 @@ const LogoutButton = styled.button`
 const mapStateToProps = (store) => {
   return {
     loggedIn: store.login.loggedIn,
-    username: store.user.user_name
+    username: store.user.user_name,
+    userRoles: store.user.roles,
   }
 };
 
@@ -77,8 +78,8 @@ class Menu extends Component{
 
 
   render() {
-    const { loggedIn, basketItems } = this.props;
-
+    const { loggedIn, basketItems, userRoles } = this.props;
+    
     return (
       <LeftFloatUL>
         <PaddedMenuItem><MenuItemLink to="/">Home</MenuItemLink></PaddedMenuItem>
@@ -89,6 +90,7 @@ class Menu extends Component{
             Basket{ basketItems }
           </MenuItemLink>
         </PaddedMenuItem>
+        { userRoles.indexOf("Admin") !== -1 ? <PaddedMenuItem><MenuItemLink to="/Admin">Admin</MenuItemLink></PaddedMenuItem> : null }
         { loggedIn ? null : <MenuItem><LoginLink to="/Login" >Login</LoginLink></MenuItem> }
         { loggedIn ? <MenuItemNoTopPad><LogoutButton onClick={ this.tryLogout } >Logout</LogoutButton></MenuItemNoTopPad> : null }
         
