@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import * as LogoutActions from '../../actions/logoutActions'
+import * as genericHelpers from '../../helpers/genericHelpers'
 
 const LeftFloatUL = styled.ul`
   float:right;
@@ -90,7 +91,7 @@ class Menu extends Component{
             Basket{ basketItems }
           </MenuItemLink>
         </PaddedMenuItem>
-        { userRoles.indexOf("Admin") !== -1 ? <PaddedMenuItem><MenuItemLink to="/Admin">Admin</MenuItemLink></PaddedMenuItem> : null }
+        { genericHelpers.userHasAdminRole(userRoles) ? <PaddedMenuItem><MenuItemLink to="/Admin">Admin</MenuItemLink></PaddedMenuItem> : null }
         { loggedIn ? null : <MenuItem><LoginLink to="/Login" >Login</LoginLink></MenuItem> }
         { loggedIn ? <MenuItemNoTopPad><LogoutButton onClick={ this.tryLogout } >Logout</LogoutButton></MenuItemNoTopPad> : null }
         

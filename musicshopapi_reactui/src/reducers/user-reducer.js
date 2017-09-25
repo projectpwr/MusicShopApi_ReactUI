@@ -11,10 +11,6 @@ const userReducer = (state = {}, action) => {
       state = {...state, name: userObj.user_name, email: userObj.user_email, roles: userObj.role};
       break;
     }
-    case "POPULATE_STUB_USER":{
-      state = {...state, name: "", email: "", roles: []};
-      break;
-    }
     default:{break;}
   }
     return state;
