@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import Label from '../components/common/Label';
 import { connect } from 'react-redux'
 import * as LoginActions from '../actions/loginActions'
+import * as genericHelpers from '../helpers/genericHelpers'
 import AdminPage from './AdminPage'
-
+import ProfilePage from './ProfilePage'
 
 const RowDiv = styled.div`
   width:320px;
@@ -77,12 +78,14 @@ class LoginPage extends Component {
 
 
   render(){
-    const { loggedIn, error, } = this.props;
+    const { loggedIn, error, userRoles } = this.props;
     
     if(loggedIn){
-      return(
-        <AdminPage />
-      )
+      if( genericHelpers.userHasAdminRole(userRoles) ){
+        return <AdminPage />
+      }else{
+        return <ProfilePage />
+      }
     }else{
       return(
         <div>

@@ -3,5 +3,8 @@ export function getDefaultUserState(){
 }
 
 export function userHasAdminRole(userRoles){
+  if(userRoles === undefined){
+    return false;
+  }
   return userRoles.indexOf("Admin") !== -1;
 }
