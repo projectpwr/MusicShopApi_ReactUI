@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import * as genericHelpers from '../helpers/genericHelpers' 
-
+import AdminHomePage from './admin/AdminHomePage'
 
 const AdminLink = styled(Link)`
   text-decoration:none;
@@ -34,18 +34,21 @@ class AdminPage extends Component {
   render(){
     const { userRoles } = this.props;
     
-    if( genericHelpers.userHasAdminRole(userRoles) ){
-      return (
-        <div>
-          <h1> Welcome to the Admin page </h1>
-          <ul>
-            <AdminLinkItem><AdminLink to="/RolesAdmin">Roles Admin </AdminLink></AdminLinkItem>
-          </ul>
-        </div>
-      )
-    }else{
+    if( !genericHelpers.userHasAdminRole(userRoles) ){
       return <p>Access Denied</p>
     }
+
+    return (
+      <div>
+        <h1> Welcome to the Admin page </h1>
+        <ul>
+          <AdminLinkItem><AdminLink to="/RolesAdmin">Roles Admin </AdminLink></AdminLinkItem>
+        </ul>
+        <AdminHomePage />
+      </div>   
+
+    )
+
   }
 }
 
