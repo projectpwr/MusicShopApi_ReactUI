@@ -6,6 +6,7 @@ import AboutPage from './containers/AboutPage'
 import ProductPage from './containers/ProductPage'
 import BasketPage from './containers/BasketPage'
 import AdminPage from './containers/AdminPage'
+import RolesAdminPage from './containers/admin/RolesAdminPage'
 
 const routes = (
   <div>
@@ -16,6 +17,7 @@ const routes = (
       <Route path="/Products" component={ProductPage} />
       <Route path="/Basket" component={BasketPage} />
       <Route path="/Admin" component={AdminPage} />
+      <Route path="/RolesAdmin" component={RolesAdminPage} />
     </Switch>
   </div>
 )
