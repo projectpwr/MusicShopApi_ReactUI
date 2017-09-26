@@ -10,6 +10,8 @@ const mapStateToProps = (store) => {
   return {
     userRoles: store.user.roles,
     allRoles: store.roles.roles,
+    rolesError: store.roles.error,
+    token: store.login.token,
   }
 };
 
@@ -25,25 +27,26 @@ class RolesAdminPage extends Component {
   }
 
   render(){
-    const { userRoles, allRoles } = this.props;
-    
-    genericHelpers.authenticateUserIsAdmin(userRoles);
-    
+    const { userRoles, allRoles, rolesError } = this.props;
+    console.log(rolesError);
 
+    if( !genericHelpers.userHasAdminRole(userRoles) ){
+      return <p>Access Denied</p>
+    }
 
-      return (
-        <section>
-          <h1>Roles Admin</h1>
-          <div> 
-            <button onClick={this.getRoles}>Get All Roles</button>
-          </div> 
-          <div> 
-            <RolesDataTable roles={ allRoles } /> 
-           </div>
-        </section>
-      )
-
-
+ 
+    return (
+      <section>
+        <h1>Roles Admin</h1>
+        <div> 
+          {allRoles === undefined || allRoles.length === 0 ? <button onClick={this.getRoles}>Get All Roles</button> : null }
+        </div> 
+        <div> 
+          { rolesError !== undefined ? <p>{ rolesError.status }: {rolesError.statusText}</p> : null }
+          <RolesDataTable roles={ allRoles } /> 
+        </div>
+      </section>
+    )
  
   }
 }

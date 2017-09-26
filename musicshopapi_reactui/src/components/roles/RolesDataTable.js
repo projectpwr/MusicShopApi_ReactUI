@@ -1,10 +1,26 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
+const Datatable = styled.table`
+`
+
+const TD = styled.td`
+  padding:10px;
+`;
+
+const deleteRole = (roleId) => {
+  //make http call here
+  alert('we want to delete the role with id:' + roleId);
+}
 
 const mapRolesToTableRows = (roles) => {
-  roles.map(
+  return roles.map(
     (element, index) => { 
-      return(<tr key={index}><td>{element.Id}</td><td>{element.Name}</td></tr>) 
+      return( <tr key={index}>
+                <TD>{element.Id}</TD>
+                <TD>{element.Name}</TD>
+                <TD><button onClick={ () => deleteRole(element.Id) }> Delete </button></TD>
+              </tr>) 
     } 
   ) 
 }
@@ -21,7 +37,7 @@ class RolesDataTable extends Component{
       return <p>No Roles Exist</p>
     }
     return (
-      <table>
+      <Datatable>
         <thead>
           <tr>
             <th>Id</th>
@@ -31,7 +47,7 @@ class RolesDataTable extends Component{
         <tbody>
           { mapRolesToTableRows(roles) }
         </tbody>    
-      </table>
+      </Datatable>
     )
   };
 }
