@@ -10,8 +10,8 @@ class AboutPage extends Component {
         <p>Use the Login button to the top left to access your account.</p>
         <p>Admin accounts have special privileges</p>
         <p>Standard accounts can only assemble and place orders</p>
-        <h4><a href="https://github.com/projectpwr/MusicShopApi_ReactUI" target="_blank">Visit the React UI repo</a></h4>
-        <h4><a href="https://github.com/projectpwr/MusicShopApi" target="_blank">Visit the Music Shop Api repo</a></h4>
+        <h4><a href="https://github.com/projectpwr/MusicShopApi_ReactUI" rel="noopener noreferrer" target="_blank">Visit the React UI repo</a></h4>
+        <h4><a href="https://github.com/projectpwr/MusicShopApi" rel="noopener noreferrer" target="_blank">Visit the Music Shop Api repo</a></h4>
       </div>  
     );
   }

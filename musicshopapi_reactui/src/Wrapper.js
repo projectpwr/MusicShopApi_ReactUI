@@ -26,7 +26,7 @@ const Header = styled.header`
 const Content = styled.section`
   min-height:300px;
   background-color:#fff;
-  text-align:center;
+  padding: 0px 20px;
 `;
 
 const Footer = styled.footer`
