@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import ProductSearch from '../components/product/ProductSearch'
 
 const mapStateToProps = (store) => {
   return {
@@ -21,8 +20,8 @@ class HomePage extends Component {
           <div>
             <h2>Welcome to Music Shop Api..</h2>
           </div>
-          <ProductSearch />
-          <p>OUr user state is: {this.props.user}</p>
+          <p>Try searching for products via the product link in the top right menu</p>
+          <p>You may also wish to log in</p>
         </div> 
     );
   }
