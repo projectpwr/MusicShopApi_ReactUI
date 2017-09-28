@@ -3,6 +3,7 @@ import userReducer from './reducers/user-reducer'
 import counterReducer from './reducers/counter-reducer'
 import loginReducer from './reducers/login-reducer'
 import rolesReducer from './reducers/roles-reducer'
+import productsReducer from './reducers/products-reducer'
 import * as genericHelpers from './helpers/genericHelpers'
 
 const appReducer = combineReducers({
@@ -10,6 +11,7 @@ const appReducer = combineReducers({
   counter: counterReducer,
   login: loginReducer,
   roles: rolesReducer,
+  products: productsReducer,
 })
 
 const rootReducer = (state = {}, action) => {
