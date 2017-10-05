@@ -23,6 +23,7 @@ class RolesAdminPage extends Component {
     this.getRoles = this.getRoles.bind(this);
   }
   getRoles(){
+    this.props.dispatch( RolesActions.resetErrorMessage() );
     this.props.dispatch( RolesActions.getRoles(this.props.token) );
   }
 
@@ -42,7 +43,7 @@ class RolesAdminPage extends Component {
           {allRoles === undefined || allRoles.length === 0 ? <button onClick={this.getRoles}>Get All Roles</button> : null }
         </div> 
         <div> 
-          { rolesError !== undefined ? <p>{ rolesError.status }: {rolesError.statusText}</p> : null }
+          { rolesError !== undefined ? <p>{ rolesError.status } {rolesError.statusText}</p> : null }
           <RolesDataTable roles={ allRoles } /> 
         </div>
       </section>

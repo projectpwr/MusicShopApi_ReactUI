@@ -14,3 +14,9 @@ export function getRoles(token){
   }
     
 }
+
+export function resetErrorMessage(){
+    return function(dispatch){
+      dispatch({type: "RESET_ROLES_ERROR"})
+    } 
+  }
