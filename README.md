@@ -1,2 +1,2 @@
 # MusicShopApi_ReactUI
-A React.Js UI for Music Shop Api
+A UI for Music Shop Api using React.js & Redux
